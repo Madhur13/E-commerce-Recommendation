@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Recommender System </title>
+{% endblock %}
+{% block content%}
+   
+        <div class="container">
+            <div class="row">
+			<div class="col-sm-12 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th><h2>Items Id</h2></th>
+                                <th><h2>Items Name</h2></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+							  {% for item in items %}
+									  <tr>
+										<td><h4><a href="{% url 'addToCart' item.id %}">{{item.id}}</a></h3></td>
+										<td><h4>{{item.name}}</h3></td>
+									  </tr>
+							  {% endfor %}
+                              
+
+                            </tbody>
+                          </table>
+							<div class="clearfix"></div>
+						</div>     
+					</div>
+			</div> 
+          </div> <!-- /.row -->
+        </div> <!-- /.container -->
+   
+
+  
+{%endblock%}

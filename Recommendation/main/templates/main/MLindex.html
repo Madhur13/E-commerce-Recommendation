@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Recommender System </title>
+{% endblock %}
+{% block content%}
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--
+Kool Store Template
+http://www.templatemo.com/preview/templatemo_428_kool_store
+-->
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+        <div class="container">
+            <div class="row">
+			
+			<div class="col-sm-6 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<div class="product-item-1">
+							<center>
+                           <h2> Place an Order</h2>
+						   </center>
+						   <hr>
+						   <center>
+                           <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal">Place</button>
+						   </center>
+                              <!-- Modal -->
+                              <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Departments</h4>
+                                    </div>
+                                    <div class="modal-body">
+										{%for department in departments %}
+											  <p><a href="{% url 'getItems' department.id %}">{{department.name}}</a></p>
+											 
+										{% endfor %}
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+                 
+
+                    </div> <!-- /.product-item -->
+							<div class="clearfix"></div>
+						</div>     
+					</div>
+			</div> 
+       
+			
+			<div class="col-sm-6 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<div class="product-item-1">
+							<center>
+                           <h2> Add to Cart</h2>
+						   </center><hr>
+						   <center>
+                           <button type="button" class="btn btn-info btn-lg " data-toggle="modal" data-target="#myModal1">Add</button>
+						   </center>
+                              <!-- Modal -->
+                              <div class="modal fade" id="myModal1" role="dialog">
+                                <div class="modal-dialog">
+
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Departments</h4>
+                                    </div>
+                                    <div class="modal-body">
+										{%for department in departments %}
+											  <p><a href="{% url 'getItemsForCart' department.id %}">{{department.name}}</a></p>
+											 
+										{% endfor %}
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+                 
+
+                    </div> <!-- /.product-item -->
+							<div class="clearfix"></div>
+						</div>     
+					</div>
+			</div> 
+			</div>
+			<br>
+			<div class = "row">
+			<div class="col-sm-4 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<table class="table table-condensed table-hover table-striped">
+                            <thead>
+                              <tr>
+                                <th><h1>Recommended Items</h1></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+							{%for rec in recommend %}
+                              <tr>
+                                <td><h3>{{rec.name}}</h3></td>
+                              </tr>
+							  {%endfor %}
+                             
+                            </tbody>
+                          </table>
+							<div class="clearfix"></div>
+						</div>     
+					</div>
+			</div> 
+			<br>
+			<br>
+		           
+			<div class="col-sm-4 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<table class="table table-condensed table-hover table-striped">
+                            <thead>
+                              <tr>
+                                <th><h1>Transaction History</h1></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+							{% for transaction in transactions %}
+                              <tr>
+                                <td><h4>{{transaction.item.name}}</h4></td>
+                              </tr>
+                             
+							  {% endfor %}
+                            </tbody>
+                          </table>
+									<div class="clearfix"></div>
+								</div>
+                           
+						</div>
+			</div> 
+			<div class="col-sm-4 center">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<table class="table table-condensed table-hover table-striped">
+                            <thead>
+                              <tr>
+                                <th><h1>Cart History</h1></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+							{% for item in cart %}
+                              <tr>
+                                <td><h4>{{item.item.name}}</h4></td>
+                              </tr>
+                             
+							  {% endfor %}
+                            </tbody>
+                          </table>
+									<div class="clearfix"></div>
+								</div>
+                           
+						</div>
+			</div> 
+</div>
+</div>
+
+    <div class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-title">
+				<hr>
+                    <h2>Most Popular Items</h2>
+                <hr>
+				</div> <!-- /.section -->
+            </div> <!-- /.row -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item-vote">
+                        <div class="product-thumb">
+                            <img src="images/products/1.jpg" alt="">
+                        </div> <!-- /.product-thum -->
+                        <div class="product-content">
+                            <h5><a href="#">Name of Shirt</a></h5>
+                            <span class="tagline">By: Catherine</span>
+                            <ul class="progess-bars">
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        <span>4<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar comments" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                        <span class="comments">6<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- /.product-content -->
+                    </div> <!-- /.product-item-vote -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item-vote">
+                        <div class="product-thumb">
+                            <img src="images/products/2.jpg" alt="">
+                        </div> <!-- /.product-thum -->
+                        <div class="product-content">
+                            <h5><a href="#">Name of Shirt</a></h5>
+                            <span class="tagline">By: Rebecca</span>
+                            <ul class="progess-bars">
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        <span>4<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar comments" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                        <span class="comments">6<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- /.product-content -->
+                    </div> <!-- /.product-item-vote -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item-vote">
+                        <div class="product-thumb">
+                            <img src="images/products/3.jpg" alt="">
+                        </div> <!-- /.product-thum -->
+                        <div class="product-content">
+                            <h5><a href="#">Name of Shirt</a></h5>
+                            <span class="tagline">By: Catherine</span>
+                            <ul class="progess-bars">
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        <span>4<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar comments" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                        <span class="comments">6<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- /.product-content -->
+                    </div> <!-- /.product-item-vote -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-item-vote">
+                        <div class="product-thumb">
+                            <img src="images/products/4.jpg" alt="">
+                        </div> <!-- /.product-thum -->
+                        <div class="product-content">
+                            <h5><a href="#">Name of Shirt</a></h5>
+                            <span class="tagline">By: Rebecca</span>
+                            <ul class="progess-bars">
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        <span>4<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progress">
+                                        <div class="progress-bar comments" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                        <span class="comments">6<i class="fa fa-heart"></i></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- /.product-content -->
+                    </div> <!-- /.product-item-vote -->
+                </div> <!-- /.col-md-3 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.content-section -->
+
+ 
+    
+
+{%endblock%}

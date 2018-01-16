@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+	{% block title %}
+	{% endblock %}
+<link rel="icon" href="{% static 'main/images/favicon.jpg' %}" type="image/jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta name="author" content="Harishankar Pansari">
+	{% block metatags %}
+	{% endblock %}
+	
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+	
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+				function hideURLbar(){ window.scrollTo(0,1); } </script>
+	 <link href="{% static 'main/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	     <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+	     <link href="{% static 'main/css/menu.css' %}" type="text/css" rel="stylesheet"/>
+	     <link href="{% static 'main/css/full-slider.css' %}" rel="stylesheet">
+	 <link href="{% static 'main/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	 <script type="text/javascript" src="{% static 'main/js/jquery-2.1.4.min.js' %}"></script>
+	 	<script type="text/javascript" src="{% static 'main/js/bootstrap-3.1.1.min.js' %}"></script>
+	 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	 <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+	 <script src="{% static 'main/js/jquery.easing.min.js' %}"></script>
+	 
+	    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/normalize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'main/css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'main/css/templatemo-misc.css'%}">
+    <link rel="stylesheet" href="{% static 'main/css/templatemo-style.css'%}">
+
+    <script src="{% static 'main/js/vendor/modernizr-2.6.2.min.js'%}"></script>
+
+	{% block styling %}
+	{% endblock %}
+
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="top-header-left">
+						{% if request.user.is_authenticated %}
+									<li style="align-right"><a href="{% url 'logout' %} ">Logout</a></li>
+									
+									{% else %}
+									
+                           <a href="{% url 'signup'%}">Sign Up</a>
+                            <a href="{% url 'login'%}">Log In</a>
+  
+        
+			
+        {% endif %}
+                            
+                        </div> <!-- /.top-header-left -->
+                    </div> <!-- /.col-md-6 -->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-dribbble"></a></li>
+                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div> <!-- /.social-icons -->
+                    </div> <!-- /.col-md-6 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.top-header -->
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-8">
+                        <div class="logo">
+                            <h1><a href="#">Smartathon'17</a></h1>
+                        </div> <!-- /.logo -->
+                    </div> <!-- /.col-md-4 -->
+
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.main-header -->
+		
+        <div class="main-nav">
+            <div class="container">
+			{% if request.user.is_authenticated %}
+                <div class="row">
+                    <div class="col-md-6 col-sm-7">
+                        <div class="list-menu">
+                            <ul>
+                                <li><a href="{%url 'MLindex'%}">Home</a></li>
+                                <li><a href="{%url 'MLCategory'%}" >Categories</a></li>
+								
+									
+					</div>
+
+				<div class="clearfix"></div>
+				</div>
+	</div>
+	{% endif %}</header><br><br><br><br>
+<div class="stickyfooter">
+{% block content %}
+{% endblock %}
+</div>
+<footer class="site-footer">
+        <div class="our-partner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="customNavigation">
+                            <a class="btn prev"><i class="fa fa-angle-left"></i></a>
+                            <a class="btn next"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div id="owl-demo" class="owl-carousel">
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-1.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-2.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-1.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-2.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-1.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-2.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-1.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-2.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-1.jpg" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href="#"><img src="images/tm-170x80-2.jpg" alt=""></a>
+                            </div>
+                        </div> <!-- /#owl-demo -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.our-partner -->
+         <div class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">About Us</h3>
+                            Final Year Students from PDPM IIITDM
+                            <ul class="follow-us">
+                                <li><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                            </ul> <!-- /.follow-us -->
+                        </div> <!-- /.footer-widget -->
+                    </div> <!-- /.col-md-3 -->
+                    <div class="col-md-3">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Why Choose Us?</h3>
+                            We are Top Coders
+                        </div> <!-- /.footer-widget -->
+                    </div> <!-- /.col-md-3 -->
+                    <div class="col-md-2">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Useful Links</h3>
+                            <ul>
+                                <li><a href="#">Shivani Singhal</a></li>
+                                <li><a href="#">Grandhi Supraja</a></li>
+                                <li><a href="#">Madhur Agarwal</a></li>
+                                <li><a href="#">Praneet Bhatnagar</a></li>
+
+                            </ul>
+                        </div> <!-- /.footer-widget -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-4">
+                        <div class="footer-widget">
+                            <h3 class="widget-title">Our Newsletter</h3>
+                            <div class="newsletter">
+                                <form action="#" method="get">
+                                    <p>Sign up for our regular updates to know when new products are released.</p>
+                                    <input type="text" title="Email" name="email" placeholder="Your Email Here">
+                                    <input type="submit" class="s-button" value="Submit" name="Submit">
+                                </form>
+                            </div> <!-- /.newsletter -->
+                        </div> <!-- /.footer-widget -->
+                    </div> <!-- /.col-md-4 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.main-footer -->
+        <div class="bottom-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span>Copyright &copy; 2017 <a href="#">IIIT</a>
+
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.bottom-footer -->
+    </footer> <!-- /.site-footer -->
+				<!-- //footer -->
+</body>
+</html>
